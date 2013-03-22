@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["mknapik@student.agh.edu.pl"]
   gem.description   = %q{Guard::Spring automatically runs tests with spring}
   gem.summary       = %q{Pushes watched files to spring}
-  gem.homepage      = ""
+  gem.homepage      = 'https://github.com/mknapik/guard-spring'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
