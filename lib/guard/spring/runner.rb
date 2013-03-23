@@ -7,6 +7,7 @@ module Guard
 
       def initialize(options = {})
         @options = options
+        create_bin_stubs %w(rspec)
         UI.info 'Guard::Spring Initialized'
       end
 
@@ -22,7 +23,7 @@ module Guard
       def run(paths)
         existing_paths = paths.uniq.select { |path| File.exist? "#{Dir.pwd}/#{path}" }
         rspec_paths = existing_paths.select { |path| path =~ /spec(\/\w+)*(\/\w+_spec\.rb)?/ }
-        run_command 'spring rspec', existing_paths.join(' ') unless rspec_paths.empty?
+        run_command './bin/spring rspec', existing_paths.join(' ') unless rspec_paths.empty?
 
         # TBD: # testunit_paths = existing_paths.select { |path| path =~ /test(.*\.rb)?/ }
         # TBD: # run_command 'spring testunit', existing_paths.join(' ') unless testunit_paths.empty?
@@ -51,19 +52,25 @@ module Guard
       end
 
       def start_spring
-        fork_exec('spring start > /dev/null')
+        fork_exec('./bin/spring start > /dev/null')
       end
 
       def stop_spring
-        run_command('spring stop')
+        run_command('./bin/spring stop')
         UI.info 'Stopping Spring ', :reset => true
       end
 
       def push_command(paths)
         cmd_parts = []
-        cmd_parts << 'spring rspec'
+        cmd_parts << './bin/spring rspec'
         cmd_parts << paths.join(' ')
         cmd_parts.join(' ')
+      end
+
+      def create_bin_stubs(stubs)
+        stubs.each do |stub|
+          run_command 'spring binstub', stub unless File.exist? "#{Dir.pwd}/bin/#{stub}"
+        end
       end
 
       def bundler?
