@@ -1,9 +1,10 @@
 # Guard::Spring
 
-Guard::Spring automatically runs RSpec with Spring.
+Guard::Spring automatically runs RSpec with [Spring](https://github.com/jonleighton/spring).
 
 Read more about [Spring](https://github.com/jonleighton/spring) - Rails application preloader.
-Learn how to use [Guard by ](https://github.com/guard/guard).
+
+Learn how to monitor file system changes with [Guard](https://github.com/guard/guard).
 
 
 ## Installation
@@ -16,13 +17,19 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install guard-spring
-
 ## Usage
 
-TODO: Write usage instructions here
+Add rules to Guardfile:
+
+    $ guard init spring
+
+Run guard. Press Enter to run all specs.
+
+    $ guard
+
+After any modification of project file or spec should run RSpec with Spring.
+
+You can modify the Guardfile to create your own rules and dependencies to run specs.
 
 ## Contributing
 
