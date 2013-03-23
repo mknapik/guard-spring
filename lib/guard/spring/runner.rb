@@ -39,19 +39,19 @@ module Guard
       private
 
       def run_command(cmd, options = '')
-        UI.debug "#{cmd} #{options}"
+        UI.debug "Command execution: #{cmd} #{options}"
         system "#{cmd} #{options}"
       end
 
       def fork_exec(cmd, options = '')
         fork do
+          UI.debug "(Fork) Command execution: #{cmd} #{options}"
           exec "#{cmd} #{options}"
         end
       end
 
       def start_spring
         fork_exec('spring start > /dev/null')
-        UI.info 'Starting Spring ', :reset => true
       end
 
       def stop_spring
