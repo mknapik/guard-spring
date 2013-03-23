@@ -11,7 +11,7 @@ Learn how to monitor file system changes with [Guard](https://github.com/guard/g
 
 Add this line to your application's Gemfile:
 
-    gem 'guard-spring', :git => 'git://github.com/mknapik/guard-spring.git'
+    gem 'guard-spring'
 
 And then execute:
 
