@@ -1,12 +1,16 @@
 # Guard::Spring
 
-TODO: Write a gem description
+Guard::Spring automatically runs RSpec with Spring.
+
+Read more about [Spring](https://github.com/jonleighton/spring) - Rails application preloader.
+Learn how to use [Guard by ](https://github.com/guard/guard).
+
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'guard-spring'
+    gem 'guard-spring', :git => 'git://github.com/mknapik/guard-spring.git'
 
 And then execute:
 
