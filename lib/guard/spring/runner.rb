@@ -20,11 +20,11 @@ module Guard
       end
 
       def run(paths)
-        existing_paths = paths.select { |path| File.exist? "#{Dir.pwd}/#{path}" }
+        existing_paths = paths.uniq.select { |path| File.exist? "#{Dir.pwd}/#{path}" }
         rspec_paths = existing_paths.select { |path| path =~ /spec(\/\w+)*(\/\w+_spec\.rb)?/ }
         run_command 'spring rspec', existing_paths.join(' ') unless rspec_paths.empty?
 
-        # TBD: # testunit_paths = existing_paths.select { |path| path =~ /spec\/.+_spec\.rb/ }
+        # TBD: # testunit_paths = existing_paths.select { |path| path =~ /test(.*\.rb)?/ }
         # TBD: # run_command 'spring testunit', existing_paths.join(' ') unless testunit_paths.empty?
       end
 
@@ -39,7 +39,7 @@ module Guard
       private
 
       def run_command(cmd, options = '')
-        puts "#{cmd} #{options}"
+        UI.debug "#{cmd} #{options}"
         system "#{cmd} #{options}"
       end
 
