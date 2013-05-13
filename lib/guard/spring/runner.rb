@@ -79,7 +79,7 @@ module Guard
         results = stubs.map do |stub|
           run_command 'spring binstub', stub unless File.exist? "#{Dir.pwd}/bin/#{stub}"
         end
-        results.empty? or results.all? { |result| result }
+        !results.any? or results.all? { |result| result }
       end
 
       def bundler?
