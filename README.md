@@ -6,6 +6,7 @@ Read more about [Spring](https://github.com/jonleighton/spring) - Rails applicat
 
 Learn how to monitor file system changes with [Guard](https://github.com/guard/guard).
 
+It seems that [guard-rspec](https://github.com/guard/guard-rspec) supports *Spring* now.
 
 ## Installation
 
