@@ -7,6 +7,7 @@ module Guard
 
       def initialize(options = {})
         @options = options
+        @options[:rspec_cli] = options[:rspec_cli].nil? ? '' : " #{options[:rspec_cli]} "
         @spring_cmd = get_spring_cmd
         UI.info 'Guard::Spring Initialized'
       end
@@ -23,7 +24,7 @@ module Guard
       def run(paths)
         existing_paths = paths.uniq.select { |path| File.exist? "#{Dir.pwd}/#{path}" }
         rspec_paths = existing_paths.select { |path| path =~ /spec(\/\w+)*(\/\w+_spec\.rb)?/ }
-        run_command "#@spring_cmd rspec", existing_paths.join(' ') unless rspec_paths.empty?
+        run_command "#@spring_cmd rspec", "#{rspec_cli}#{existing_paths.join(' ')}" unless rspec_paths.empty?
 
         # TBD: # testunit_paths = existing_paths.select { |path| path =~ /test(.*\.rb)?/ }
         # TBD: # run_command 'spring testunit', existing_paths.join(' ') unless testunit_paths.empty?
@@ -92,6 +93,10 @@ module Guard
 
       def rspec?
         @rspec ||= options[:rspec] != false && File.exist?("#{Dir.pwd}/spec")
+      end
+
+      def rspec_cli
+        options[:rspec_cli]
       end
     end
   end
