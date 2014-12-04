@@ -1,16 +1,15 @@
 require 'guard'
-require 'guard/guard'
+require 'guard/plugin'
 require 'spring/commands'
 
 module Guard
-  class Spring < Guard
+  class Spring < Plugin
     autoload :Runner, 'guard/spring/runner'
     attr_accessor :runner
 
     # Initialize a Guard.
-    # @param [Array<Guard::Watcher>] watchers the Guard file watchers
     # @param [Hash] options the custom Guard options
-    def initialize(watchers = [], options = {})
+    def initialize(options = {})
       super
       @runner = Runner.new(options)
     end
