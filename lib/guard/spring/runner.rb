@@ -31,7 +31,9 @@ module Guard
 
       def spring_command
         @spring_command ||= begin
-          if bundler?
+          if options[:cmd]
+            options[:cmd]
+          elsif bundler?
             'bundle exec spring'
           elsif bin_stub_exists?
             bin_stub

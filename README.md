@@ -28,6 +28,18 @@ Run guard. Press Enter to run all specs.
 
 After any modification of monitored files Spring will be restarted.
 
+## Options
+
+### List of available options:
+
+Default values shown here.
+
+    cmd: 'spring'                      # Specify a custom Spring command to run, default: 
+                                       # 'bundle exec spring' if bundler option is enabled,
+                                       # 'bin/spring' if it exists, or 'spring'.
+    bundler: false                     # If true, use 'bundle exec' to run Spring
+                                       # (cmd option overrides this).
+
 ## Contributing
 
 1. Fork it

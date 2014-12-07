@@ -56,30 +56,37 @@ describe Guard::Spring::Runner do
       allow(runner).to receive(:bin_stub).and_return(bin_stub_path)
     end
 
-    context 'when bundler is enabled' do
-      let(:options) { {bundler: true} }
-
-      context 'when bin stub exists' do
-        let(:bin_stub_exists) { true }
-        it { is_expected.to eq('bundle exec spring') }
-      end
-
-      context 'when bin stub does not exist' do
-        let(:bin_stub_exists) { false }
-        it { is_expected.to eq('bundle exec spring') }
-      end
+    context 'when cmd option is present' do
+      let(:options) { {cmd: 'foobar'} }
+      it { is_expected.to eq('foobar') }
     end
-    context 'when bundler is disabled' do
-      let(:options) { {bundler: false} }
 
-      context 'when bin stub exists' do
-        let(:bin_stub_exists) { true }
-        it { is_expected.to eq(bin_stub_path) }
+    context 'when cmd option is unused' do
+      context 'with bundler: true' do
+        let(:options) { {bundler: true} }
+
+        context 'when bin stub exists' do
+          let(:bin_stub_exists) { true }
+          it { is_expected.to eq('bundle exec spring') }
+        end
+
+        context 'when bin stub does not exist' do
+          let(:bin_stub_exists) { false }
+          it { is_expected.to eq('bundle exec spring') }
+        end
       end
+      context 'with bundler: false' do
+        let(:options) { {bundler: false} }
 
-      context 'when bin stub does not exist' do
-        let(:bin_stub_exists) { false }
-        it { is_expected.to eq('spring') }
+        context 'when bin stub exists' do
+          let(:bin_stub_exists) { true }
+          it { is_expected.to eq(bin_stub_path) }
+        end
+
+        context 'when bin stub does not exist' do
+          let(:bin_stub_exists) { false }
+          it { is_expected.to eq('spring') }
+        end
       end
     end
   end
