@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = Dir.glob('{spec}/**/*')
   gem.require_path  = 'lib'
 
-  gem.add_dependency 'guard'
+  gem.add_dependency 'guard', '>= 2.0'
+  gem.add_dependency('guard-compat', '~> 0.3')
   gem.add_dependency 'spring'
 end
