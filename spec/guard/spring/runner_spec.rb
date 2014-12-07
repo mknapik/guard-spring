@@ -15,8 +15,14 @@ describe Guard::Spring::Runner do
   end
 
   describe '#start' do
-    it 'does nothing' do
-      expect(runner).to_not receive(:stop_spring)
+    it 'outputs a message' do
+      expect(::Guard::UI).to receive(:info).with(/starting/i)
+      allow(runner).to receive(:start_spring)
+      runner.start
+    end
+
+    it 'calls start_spring' do
+      expect(runner).to receive(:start_spring).with(no_args)
       runner.start
     end
   end
@@ -103,6 +109,16 @@ describe Guard::Spring::Runner do
       allow(runner).to receive(:bin_stub).and_return(bin_stub_path)
       expect(File).to receive(:exist?).with(bin_stub_path).and_return(0xdeadbeef)
       expect(runner.send(:bin_stub_exists?)).to eq(0xdeadbeef)
+    end
+  end
+
+  describe '#start_spring' do
+    it 'makes a system call to start Spring' do
+      allow(runner).to receive(:environments).and_return(%w(env1 env2))
+      allow(runner).to receive(:spring_command).and_return('barbaz')
+      expect(runner).to receive(:system).with(/barbaz rake -T RAILS_ENV='env1'/).and_return(true)
+      expect(runner).to receive(:system).with(/barbaz rake -T RAILS_ENV='env2'/).and_return(true)
+      runner.send(:start_spring)
     end
   end
 

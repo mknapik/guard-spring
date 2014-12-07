@@ -11,6 +11,8 @@ module Guard
       end
 
       def start
+        UI.info "Guard::Spring starting Spring"
+        start_spring
       end
 
       def stop
@@ -24,6 +26,12 @@ module Guard
       end
 
       private
+
+      def start_spring
+        environments.each do |env|
+          system "#{spring_command} rake -T RAILS_ENV='#{env}' > /dev/null"
+        end
+      end
 
       def stop_spring
         system "#{spring_command} stop"
@@ -53,6 +61,10 @@ module Guard
 
       def bundler?
         options.fetch(:bundler, false)
+      end
+
+      def environments
+        options.fetch(:environments, %w(test development))
       end
     end
   end

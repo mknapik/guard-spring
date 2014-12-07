@@ -39,6 +39,7 @@ Default values shown here.
                                        # 'bin/spring' if it exists, or 'spring'.
     bundler: false                     # If true, use 'bundle exec' to run Spring
                                        # (cmd option overrides this).
+    environments: %w(test development) # Which environments to start when Guard starts.
 
 ## Contributing
 
