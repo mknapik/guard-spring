@@ -23,6 +23,7 @@ module Guard
       def restart
         UI.info "Guard::Spring restarting Spring"
         stop_spring
+        start_spring
       end
 
       private
