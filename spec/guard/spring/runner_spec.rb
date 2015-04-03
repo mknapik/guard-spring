@@ -44,11 +44,13 @@ describe Guard::Spring::Runner do
     it 'outputs a message' do
       expect(::Guard::UI).to receive(:info).with(/restarting/i)
       allow(runner).to receive(:stop_spring)
+      allow(runner).to receive(:start_spring)
       runner.restart
     end
 
-    it 'calls stop_spring' do
-      expect(runner).to receive(:stop_spring).with(no_args)
+    it 'calls stop_spring and start_spring' do
+      expect(runner).to receive(:stop_spring).with(no_args).ordered
+      expect(runner).to receive(:start_spring).with(no_args).ordered
       runner.restart
     end
   end
