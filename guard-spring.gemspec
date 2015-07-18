@@ -21,6 +21,9 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'guard-compat', '~> 1.1'
   gem.add_dependency 'spring'
 
+  gem.add_development_dependency 'rubocop', '~> 0.31'
+  gem.add_development_dependency 'rubocop-rspec', '~> 1.3'
+
   gem.add_development_dependency 'rspec', '~> 3.0'
   gem.add_development_dependency 'simplecov'
   gem.add_development_dependency 'codeclimate-test-reporter'

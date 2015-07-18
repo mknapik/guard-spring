@@ -7,5 +7,12 @@ rescue LoadError => e
   STDERR.puts e
 end
 
-task default: [:spec]
+begin
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new(:rubocop)
+rescue LoadError => e
+  STDERR.puts e
+end
+
+task default: [:spec, :rubocop]
 
