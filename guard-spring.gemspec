@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+$:.push File.expand_path("../lib", __FILE__)
 require 'guard/spring/version'
 
 Gem::Specification.new do |gem|
@@ -12,12 +11,16 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Guard::Spring automatically runs tests with spring}
   gem.summary       = %q{Pushes watched files to spring}
   gem.homepage      = 'https://github.com/mknapik/guard-spring'
+  gem.license       = 'MIT'
 
-  gem.files         = `git ls-files`.split($/)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.require_paths = ['lib']
+  gem.files         = Dir.glob('{lib}/**/*') + %w[LICENSE.txt README.md]
+  gem.test_files    = Dir.glob('{spec}/**/*')
+  gem.require_path  = 'lib'
 
-  gem.add_dependency 'guard'
+  gem.add_dependency 'guard', '~> 2.0'
+  gem.add_dependency 'guard-compat', '~> 1.1'
   gem.add_dependency 'spring'
+
+  gem.add_development_dependency 'rspec', '~> 3.0'
+  gem.add_development_dependency 'simplecov'
 end
