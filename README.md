@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/mknapik/guard-spring.svg?branch=master)](https://travis-ci.org/mknapik/guard-spring)
+[![Dependency Status](https://gemnasium.com/mknapik/guard-spring.svg)](https://gemnasium.com/mknapik/guard-spring)
+[![Code Climate](https://codeclimate.com/github/mknapik/guard-spring/badges/gpa.svg)](https://codeclimate.com/github/mknapik/guard-spring)
+[![Test Coverage](https://codeclimate.com/github/mknapik/guard-spring/badges/coverage.svg)](https://codeclimate.com/github/mknapik/guard-spring/coverage)
+[![Gem Version](https://badge.fury.io/rb/guard-spring.svg)](http://badge.fury.io/rb/guard-spring)
+
 # Guard::Spring
 
 Guard::Spring starts, stops, and restarts [Spring](https://github.com/jonleighton/spring) - Rails application preloader. This plugin therefore most importantly ensures that Spring is not left running when Guard is stopped.
