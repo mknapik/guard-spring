@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.version       = Guard::SpringVersion::VERSION
   gem.platform      = Gem::Platform::RUBY
   gem.authors       = ['Michał Knapik']
-  gem.email         = ['mknapik@student.agh.edu.pl']
+  gem.email         = ['michal@knapik.me']
   gem.description   = %q{Guard::Spring automatically runs tests with spring}
   gem.summary       = %q{Pushes watched files to spring}
   gem.homepage      = 'https://github.com/mknapik/guard-spring'
