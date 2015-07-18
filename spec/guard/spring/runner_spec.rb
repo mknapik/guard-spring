@@ -9,7 +9,7 @@ describe Guard::Spring::Runner do
   end
 
   describe '#initialize' do
-    it 'should have default options and allow overrides' do
+    it 'has default options and allow overrides' do
       expect(runner.options).to eq(options)
     end
   end

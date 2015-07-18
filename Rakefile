@@ -15,4 +15,3 @@ rescue LoadError => e
 end
 
 task default: [:spec, :rubocop]
-

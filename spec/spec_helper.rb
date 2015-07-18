@@ -18,7 +18,7 @@ require 'rspec'
 require 'guard/compat/test/helper'
 require 'guard/spring'
 
-ENV["GUARD_ENV"] = 'test'
+ENV['GUARD_ENV'] = 'test'
 
 RSpec.configure do |config|
   config.before(:each) do

@@ -11,17 +11,17 @@ module Guard
       end
 
       def start
-        UI.info "Guard::Spring starting Spring"
+        UI.info 'Guard::Spring starting Spring'
         start_spring
       end
 
       def stop
-        UI.info "Guard::Spring stopping Spring"
+        UI.info 'Guard::Spring stopping Spring'
         stop_spring
       end
 
       def restart
-        UI.info "Guard::Spring restarting Spring"
+        UI.info 'Guard::Spring restarting Spring'
         stop_spring
         start_spring
       end
