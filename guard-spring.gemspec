@@ -8,8 +8,9 @@ Gem::Specification.new do |gem|
   gem.platform      = Gem::Platform::RUBY
   gem.authors       = ['Michał Knapik']
   gem.email         = ['michal@knapik.me']
-  gem.description   = %q{Guard::Spring automatically runs tests with spring}
-  gem.summary       = %q{Pushes watched files to spring}
+  gem.description   = %q{Guard::Spring automatically manages spring process.}
+  gem.summary       = %q{Guard::Spring starts, stops, and restarts Spring.
+                         The plugin ensures that Spring is not left running when Guard is stopped.}
   gem.homepage      = 'https://github.com/mknapik/guard-spring'
   gem.license       = 'MIT'
 
