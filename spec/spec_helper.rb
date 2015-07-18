@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
-unless ENV['CI']
+
+if ENV['COVERAGE']
   require 'simplecov'
   require 'codeclimate-test-reporter'
 
