@@ -6,7 +6,7 @@
 
 # Guard::Spring
 
-Guard::Spring starts, stops, and restarts [Spring](https://github.com/jonleighton/spring) - Rails application preloader. This plugin therefore most importantly ensures that Spring is not left running when Guard is stopped.
+Guard::Spring starts, stops, and restarts [Spring](https://github.com/rails/spring) - Rails application preloader. This plugin therefore most importantly ensures that Spring is not left running when Guard is stopped.
 
 Learn how to monitor file system changes with [Guard](https://github.com/guard/guard).
 
